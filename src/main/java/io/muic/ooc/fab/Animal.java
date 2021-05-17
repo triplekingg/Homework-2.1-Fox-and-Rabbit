@@ -113,7 +113,7 @@ public abstract class Animal {
      *
      * @param newRabbits A list to return newly born rabbits.
      */
-    protected void giveBirth(List newRabbits) {
+    protected void giveBirth(List<Animal> newRabbits) {
         // New rabbits are born into adjacent locations.
         // Get a list of adjacent free locations.
         List<Location> free = field.getFreeAdjacentLocations(location);
@@ -124,6 +124,8 @@ public abstract class Animal {
             newRabbits.add(young);
         }
     }
+
+    public abstract void act(List<Animal> animals);
 
 
 }
