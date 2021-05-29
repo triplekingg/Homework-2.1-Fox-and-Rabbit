@@ -135,12 +135,12 @@ public class Simulator {
             for (int col = 0; col < field.getWidth(); col++) {
                 if (RANDOM.nextDouble() <= FOX_CREATION_PROBABILITY) {
                     Location location = new Location(row, col);
-                    Fox fox = new Fox(true, field, location);
-                    animals.add(fox);
+                    Animal animal = AnimalFactory.createAnimal(AnimalType.FOX, field, location);
+                    animals.add(animal);
                 } else if (RANDOM.nextDouble() <= RABBIT_CREATION_PROBABILITY) {
                     Location location = new Location(row, col);
-                    Rabbit rabbit = new Rabbit(true, field, location);
-                    animals.add(rabbit);
+                    Animal animal = AnimalFactory.createAnimal(AnimalType.RABBIT, field, location);
+                    animals.add(animal);
                 }
                 // else leave the location empty.
             }

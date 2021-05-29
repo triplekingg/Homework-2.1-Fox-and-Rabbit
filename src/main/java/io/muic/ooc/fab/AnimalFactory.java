@@ -3,7 +3,7 @@ package io.muic.ooc.fab;
 public class AnimalFactory {
 
 
-    public Animal createAnimal(AnimalType animalType, Field field, Location location){
+    public static Animal createAnimal(AnimalType animalType, Field field, Location location){
         switch (animalType){
             case RABBIT:
                 return new Rabbit(true,field,location);
