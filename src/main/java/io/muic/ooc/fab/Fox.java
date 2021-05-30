@@ -61,11 +61,7 @@ public class Fox extends Animal {
         if (isAlive()) {
             giveBirth(animals);
             // Move towards a source of food if found.
-            Location newLocation = findFood();
-            if (newLocation == null) {
-                // No food found - try to move to a free location.
-                newLocation = field.freeAdjacentLocation(location);
-            }
+            Location newLocation = moveToNewLocation();
             // See if it was possible to move.
             if (newLocation != null) {
                 setLocation(newLocation);
@@ -133,5 +129,15 @@ public class Fox extends Animal {
     @Override
     protected Animal createYoung(boolean randomAge, Field field, Location location) {
         return new Fox(randomAge, field, location);
+    }
+
+    @Override
+    protected Location moveToNewLocation() {
+        Location newLocation = findFood();
+        if (newLocation == null) {
+            // No food found - try to move to a free location.
+            newLocation = field.freeAdjacentLocation(location);
+        }
+        return newLocation;
     }
 }
