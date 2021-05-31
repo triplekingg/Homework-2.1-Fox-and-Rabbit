@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Random;
 
 public abstract class Animal {
+
+    protected static final Random RANDOM = new Random();
     // Whether the animal is alive or not.
     private boolean alive;
 
@@ -15,8 +17,17 @@ public abstract class Animal {
     // The fox's age.
     protected int age;
 
-    private static final Random RANDOM = new Random();
 
+
+    public Animal(boolean randomAge, Field field, Location location) {
+        this.field = field;
+        this.age = 0;
+        this.alive = true;
+        setLocation(location);
+        if (randomAge) {
+            age = RANDOM.nextInt(getMaxAge());
+        }
+    }
 
     /**
      * Check whether the animal is alive or not.
