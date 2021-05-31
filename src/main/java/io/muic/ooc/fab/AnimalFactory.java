@@ -15,13 +15,22 @@ public class AnimalFactory {
 
     public static Animal createAnimal(AnimalType animalType, Field field, Location location){
         Class animalClass = animalClassMap.get(animalType);
-        switch (animalType){
-            case RABBIT:
-                return new Rabbit(true,field,location);
-            case FOX:
-                return new Fox(true,field,location);
-            default:
-                throw new IllegalArgumentException("Unknown animalType");
+        return createAnimal(animalClass,field,location);
+    }
+
+    public static Animal createAnimal(Class animalClass, Field field, Location location){
+        if(animalClass != null){
+            try {
+                Animal animal = (Animal) animalClass.newInstance();
+                animal.initialize(true,field,location);
+                return animal;
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+
         }
+        throw new IllegalArgumentException("Unknown Animal");
     }
 }

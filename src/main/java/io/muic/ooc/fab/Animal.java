@@ -19,7 +19,7 @@ public abstract class Animal {
 
 
 
-    public Animal(boolean randomAge, Field field, Location location) {
+    public void initialize(boolean randomAge, Field field, Location location) {
         this.field = field;
         this.age = 0;
         this.alive = true;
@@ -116,7 +116,7 @@ public abstract class Animal {
 
     protected abstract int getBreedingAge();
 
-    protected abstract Animal createYoung(boolean randomAge, Field field, Location location);
+    protected abstract Animal breedOne(boolean randomAge, Field field, Location location);
 
     protected abstract Location moveToNewLocation();
 
@@ -133,7 +133,7 @@ public abstract class Animal {
         int births = breed();
         for (int b = 0; b < births && free.size() > 0; b++) {
             Location loc = free.remove(0);
-            Animal young = createYoung(false, field, loc);
+            Animal young = breedOne(false, field, loc);
             newRabbits.add(young);
         }
     }

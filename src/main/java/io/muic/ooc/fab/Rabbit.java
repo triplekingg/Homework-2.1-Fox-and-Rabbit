@@ -13,9 +13,6 @@ public class Rabbit extends Animal {
      * @param field The field currently occupied.
      * @param location The location within the field.
      */
-    public Rabbit(boolean randomAge, Field field, Location location) {
-        super(randomAge, field, location);
-    }
 
     /**
      * This is what the rabbit does most of the time - it runs around. Sometimes
@@ -60,8 +57,8 @@ public class Rabbit extends Animal {
     }
 
     @Override
-    protected Animal createYoung(boolean randomAge, Field field, Location location) {
-        return new Rabbit(randomAge, field, location);
+    protected Animal breedOne(boolean randomAge, Field field, Location location) {
+        return AnimalFactory.createAnimal(this.getClass(),field,location);
     }
 
     @Override
