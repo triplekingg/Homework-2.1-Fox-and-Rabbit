@@ -6,7 +6,7 @@ import io.muic.ooc.fab.view.SimulatorView;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.awt.Color;
+
 
 public class Simulator {
 
@@ -53,9 +53,10 @@ public class Simulator {
 
         // Create a view of the state of each location in the field.
         view = new SimulatorView(depth, width);
-        view.setColor(Rabbit.class, Color.ORANGE);
-        view.setColor(Fox.class, Color.BLUE);
-
+        AnimalType[] animalTypes = AnimalType.values();
+        for(int i = 0; i < animalTypes.length; i++){
+            view.setColor(animalTypes[i].getAnimalClass(), animalTypes[i].getColor());
+        }
         // Setup a valid starting point.
         reset();
     }
