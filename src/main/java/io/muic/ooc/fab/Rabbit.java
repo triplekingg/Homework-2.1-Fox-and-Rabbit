@@ -56,8 +56,18 @@ public class Rabbit extends Animal {
     }
 
     @Override
+    protected int getRabbitFoodValue() {
+        return 0;
+    }
+
+    @Override
+    protected int getFoxFoodValue() {
+        return 0;
+    }
+
+    @Override
     protected Animal breedOne(boolean randomAge, Field field, Location location) {
-        return ActorFactory.createAnimal(this.getClass(),field,location);
+        return AnimalFactory.createAnimal(this.getClass(),field,location);
     }
 
     @Override

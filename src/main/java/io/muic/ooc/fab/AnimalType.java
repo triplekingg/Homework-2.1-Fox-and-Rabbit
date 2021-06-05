@@ -2,7 +2,7 @@ package io.muic.ooc.fab;
 
 import java.awt.*;
 
-public enum ActorType {
+public enum AnimalType {
     RABBIT(0.08, Rabbit.class, Color.ORANGE),
     FOX(0.02,Fox.class, Color.BLUE),
     TIGER(0.02,Tiger.class, Color.RED);
@@ -12,7 +12,7 @@ public enum ActorType {
     private Class animalClass;
     private Color color;
 
-    ActorType(double breedingProbability, Class animalClass, Color color) {
+    AnimalType(double breedingProbability, Class animalClass, Color color) {
         this.breedingProbability = breedingProbability;
         this.animalClass = animalClass;
         this.color = color;

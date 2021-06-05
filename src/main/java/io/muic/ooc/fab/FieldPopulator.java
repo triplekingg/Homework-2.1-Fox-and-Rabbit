@@ -7,10 +7,10 @@ import java.util.Random;
 
 public class FieldPopulator {
 
-    private Map<ActorType, Double> probabilityMap = new HashMap<ActorType, Double>(){{
-        ActorType[] actorTypes = ActorType.values();
-        for(int i = 0; i < actorTypes.length; i++){
-            put(actorTypes[i], actorTypes[i].getBreedingProbability());
+    private Map<AnimalType, Double> probabilityMap = new HashMap<AnimalType, Double>(){{
+        AnimalType[] animalTypes = AnimalType.values();
+        for(int i = 0; i < animalTypes.length; i++){
+            put(animalTypes[i], animalTypes[i].getBreedingProbability());
         }
     }};
     private static final Random RANDOM = new Random();
@@ -22,10 +22,10 @@ public class FieldPopulator {
         field.clear();
         for (int row = 0; row < field.getDepth(); row++) {
             for (int col = 0; col < field.getWidth(); col++) {
-                for(Map.Entry<ActorType,Double> entry : probabilityMap.entrySet()){
+                for(Map.Entry<AnimalType,Double> entry : probabilityMap.entrySet()){
                     if(RANDOM.nextDouble() <= entry.getValue()){
                         Location location = new Location(row, col);
-                        Animal animal = ActorFactory.createAnimal(entry.getKey(), field, location);
+                        Animal animal = AnimalFactory.createAnimal(entry.getKey(), field, location);
                         animals.add(animal);
                         break;
                     }

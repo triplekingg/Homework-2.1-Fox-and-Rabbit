@@ -4,9 +4,6 @@ import java.util.List;
 import java.util.Iterator;
 
 public class Fox extends Animal {
-    // The food value of a single rabbit. In effect, this is the
-    // number of steps a fox can go before it has to eat again.
-    private static final int RABBIT_FOOD_VALUE = 9;
 
     // The fox's food level, which is increased by eating rabbits.
     private int foodLevel;
@@ -22,7 +19,7 @@ public class Fox extends Animal {
     @Override
     public void initialize(boolean randomAge, Field field, Location location) {
         super.initialize(randomAge, field, location);
-        foodLevel = RANDOM.nextInt(RABBIT_FOOD_VALUE);
+        foodLevel = RANDOM.nextInt(getRabbitFoodValue());
     }
 
     /**
@@ -77,7 +74,7 @@ public class Fox extends Animal {
                 Rabbit rabbit = (Rabbit) animal;
                 if (rabbit.isAlive()) {
                     rabbit.setDead();
-                    foodLevel = RABBIT_FOOD_VALUE;
+                    foodLevel = getRabbitFoodValue();
                     return where;
                 }
             }
@@ -87,7 +84,7 @@ public class Fox extends Animal {
 
     @Override
     public int getMaxAge() {
-        return 150;
+        return 100;
     }
 
     @Override
@@ -101,13 +98,21 @@ public class Fox extends Animal {
     }
 
     @Override
-    protected int getBreedingAge() {
-        return 15;
+    protected int getBreedingAge() { return 2; }
+
+    @Override
+    protected int getRabbitFoodValue() {
+        return 9;
+    }
+
+    @Override
+    protected int getFoxFoodValue() {
+        return 0;
     }
 
     @Override
     protected Animal breedOne(boolean randomAge, Field field, Location location) {
-        return ActorFactory.createAnimal(getClass(),field,location);
+        return AnimalFactory.createAnimal(getClass(),field,location);
     }
 
     @Override

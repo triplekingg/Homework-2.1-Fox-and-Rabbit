@@ -6,9 +6,9 @@ import java.util.List;
 public class Tiger extends Animal {
     // The food value of a single rabbit. In effect, this is the
     // number of steps a fox can go before it has to eat again.
-    private static final int RABBIT_FOOD_VALUE = 9;
 
-    // The fox's food level, which is increased by eating rabbits.
+
+    // The Tiger's food level, which is increased by eating rabbits.
     private int foodLevel;
 
     /**
@@ -22,7 +22,7 @@ public class Tiger extends Animal {
     @Override
     public void initialize(boolean randomAge, Field field, Location location) {
         super.initialize(randomAge, field, location);
-        foodLevel = RANDOM.nextInt(RABBIT_FOOD_VALUE);
+        foodLevel = RANDOM.nextInt(getFoxFoodValue());
     }
 
     /**
@@ -77,7 +77,15 @@ public class Tiger extends Animal {
                 Rabbit rabbit = (Rabbit) animal;
                 if (rabbit.isAlive()) {
                     rabbit.setDead();
-                    foodLevel = RABBIT_FOOD_VALUE;
+                    foodLevel = getRabbitFoodValue();
+                    return where;
+                }
+            }
+            else if (animal instanceof Fox) {
+                Fox fox = (Fox) animal;
+                if (fox.isAlive()) {
+                    fox.setDead();
+                    foodLevel = getFoxFoodValue();
                     return where;
                 }
             }
@@ -87,17 +95,17 @@ public class Tiger extends Animal {
 
     @Override
     public int getMaxAge() {
-        return 200;
+        return 300;
     }
 
     @Override
     protected double getBreedingProbability() {
-        return 0.08;
+        return 0.05;
     }
 
     @Override
     protected int getMaxLitterSize() {
-        return 2;
+        return 1;
     }
 
     @Override
@@ -106,8 +114,18 @@ public class Tiger extends Animal {
     }
 
     @Override
+    protected int getRabbitFoodValue() {
+        return 9;
+    }
+
+    @Override
+    protected int getFoxFoodValue() {
+        return 6;
+    }
+
+    @Override
     protected Animal breedOne(boolean randomAge, Field field, Location location) {
-        return ActorFactory.createAnimal(getClass(),field,location);
+        return AnimalFactory.createAnimal(getClass(),field,location);
     }
 
     @Override
