@@ -98,15 +98,20 @@ public class Fox extends Animal {
     }
 
     @Override
-    protected int getBreedingAge() { return 2; }
+    protected int getBreedingAge() { return 1; }
 
     @Override
     protected int getRabbitFoodValue() {
-        return 9;
+        return 10;
     }
 
     @Override
     protected int getFoxFoodValue() {
+        return 0;
+    }
+
+    @Override
+    protected int getTigerFoodValue() {
         return 0;
     }
 

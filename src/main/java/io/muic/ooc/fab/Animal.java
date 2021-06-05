@@ -120,6 +120,8 @@ public abstract class Animal {
 
     protected abstract int getFoxFoodValue();
 
+    protected abstract int getTigerFoodValue();
+
     protected abstract Animal breedOne(boolean randomAge, Field field, Location location);
 
     protected abstract Location moveToNewLocation();

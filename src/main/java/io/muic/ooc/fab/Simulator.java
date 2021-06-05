@@ -115,6 +115,7 @@ public class Simulator {
     public void reset() {
         step = 0;
         animals.clear();
+        new FieldPopulator().insertHunter(field,animals);
         new FieldPopulator().populate(field,animals);
 
         // Show the starting state in the view.

@@ -100,7 +100,7 @@ public class Tiger extends Animal {
 
     @Override
     protected double getBreedingProbability() {
-        return 0.05;
+        return 0.07;
     }
 
     @Override
@@ -115,12 +115,17 @@ public class Tiger extends Animal {
 
     @Override
     protected int getRabbitFoodValue() {
-        return 9;
+        return 12;
     }
 
     @Override
     protected int getFoxFoodValue() {
-        return 6;
+        return 5;
+    }
+
+    @Override
+    protected int getTigerFoodValue() {
+        return 0;
     }
 
     @Override

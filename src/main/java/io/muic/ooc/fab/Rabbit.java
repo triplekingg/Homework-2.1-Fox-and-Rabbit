@@ -52,7 +52,7 @@ public class Rabbit extends Animal {
 
     @Override
     protected int getBreedingAge() {
-        return 5;
+        return 10;
     }
 
     @Override
@@ -62,6 +62,11 @@ public class Rabbit extends Animal {
 
     @Override
     protected int getFoxFoodValue() {
+        return 0;
+    }
+
+    @Override
+    protected int getTigerFoodValue() {
         return 0;
     }
 
