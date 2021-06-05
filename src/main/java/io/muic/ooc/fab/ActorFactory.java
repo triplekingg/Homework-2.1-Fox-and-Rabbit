@@ -3,18 +3,18 @@ package io.muic.ooc.fab;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AnimalFactory {
+public class ActorFactory {
 
-    private static Map<AnimalType, Class> animalClassMap = new HashMap<AnimalType, Class>(){{
-        AnimalType[] animalTypes = AnimalType.values();
-        for(int i = 0; i < animalTypes.length; i++){
-            put(animalTypes[i], animalTypes[i].getAnimalClass());
+    private static Map<ActorType, Class> animalClassMap = new HashMap<ActorType, Class>(){{
+        ActorType[] actorTypes = ActorType.values();
+        for(int i = 0; i < actorTypes.length; i++){
+            put(actorTypes[i], actorTypes[i].getAnimalClass());
         }
     }};
 
 
-    public static Animal createAnimal(AnimalType animalType, Field field, Location location){
-        Class animalClass = animalClassMap.get(animalType);
+    public static Animal createAnimal(ActorType actorType, Field field, Location location){
+        Class animalClass = animalClassMap.get(actorType);
         return createAnimal(animalClass,field,location);
     }
 

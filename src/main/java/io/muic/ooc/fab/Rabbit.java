@@ -1,7 +1,6 @@
 package io.muic.ooc.fab;
 
 import java.util.List;
-import java.util.Random;
 
 public class Rabbit extends Animal {
 
@@ -58,7 +57,7 @@ public class Rabbit extends Animal {
 
     @Override
     protected Animal breedOne(boolean randomAge, Field field, Location location) {
-        return AnimalFactory.createAnimal(this.getClass(),field,location);
+        return ActorFactory.createAnimal(this.getClass(),field,location);
     }
 
     @Override

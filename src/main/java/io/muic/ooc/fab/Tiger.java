@@ -107,7 +107,7 @@ public class Tiger extends Animal {
 
     @Override
     protected Animal breedOne(boolean randomAge, Field field, Location location) {
-        return AnimalFactory.createAnimal(getClass(),field,location);
+        return ActorFactory.createAnimal(getClass(),field,location);
     }
 
     @Override

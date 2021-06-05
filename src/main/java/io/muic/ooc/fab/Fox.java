@@ -2,7 +2,6 @@ package io.muic.ooc.fab;
 
 import java.util.List;
 import java.util.Iterator;
-import java.util.Random;
 
 public class Fox extends Animal {
     // The food value of a single rabbit. In effect, this is the
@@ -108,7 +107,7 @@ public class Fox extends Animal {
 
     @Override
     protected Animal breedOne(boolean randomAge, Field field, Location location) {
-        return AnimalFactory.createAnimal(getClass(),field,location);
+        return ActorFactory.createAnimal(getClass(),field,location);
     }
 
     @Override
