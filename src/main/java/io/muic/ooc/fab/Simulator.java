@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 
-public class Simulator {
+public class Simulator extends Observable{
+
+
 
     // Constants representing configuration information for the simulation.
     // The default width for the grid.
@@ -25,6 +27,7 @@ public class Simulator {
     private int step;
     // A graphical view of the simulation.
     private SimulatorView view;
+    private SimulatorViewObserver simulatorViewObserver;
 
 
     /**
@@ -46,6 +49,7 @@ public class Simulator {
             System.out.println("Using default values.");
             depth = DEFAULT_DEPTH;
             width = DEFAULT_WIDTH;
+            addObserver(simulatorViewObserver);
         }
 
         animals = new ArrayList<>();
@@ -106,7 +110,7 @@ public class Simulator {
         // Add the newly born foxes and rabbits to the main lists.
         animals.addAll(newAnimals);
 
-        view.showStatus(step, field);
+        notifyAllObservers(step, field);
     }
 
     /**
@@ -119,7 +123,9 @@ public class Simulator {
         new FieldPopulator().populate(field,animals);
 
         // Show the starting state in the view.
-        view.showStatus(step, field);
+        notifyAllObservers(step, field);
+
+
     }
 
     /**
